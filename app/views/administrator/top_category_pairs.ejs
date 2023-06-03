@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="/app.css">
+    <title>Top category pairs</title>
+    </head>
+    <body>
+        <h1>Top 3 category pairs in borrowings:</h1>
+        <table>
+            <tr>
+                <th>Category Pair</th>
+                <th>Borrowing Count</th>
+            </tr>
+            <% for(const pair of categoryPairs) { %>
+            <tr>
+                <td><%= pair.category1 + ' & ' + pair.category2 %></td>
+                <td><%= pair.count %></td>
+            </tr>
+            <% } %>
+        </table>
+    </body>
+</html>

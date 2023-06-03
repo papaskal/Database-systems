@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/app.css">
+    <title>Book reviews</title>
+</head>
+
+<body>
+    <h1>Book reviews</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Rating</th>
+                <th>Review Text</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const review of reviews) { %>
+                <tr>
+                    <td>
+                        <%= review.username %>
+                    </td>
+                    <td>
+                        <%= review.rating %>
+                    </td>
+                    <td>
+                        <%= review.review_text ? review.review_text : 'N/A' %>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+
+    <br>
+
+    <h2>Add New Review</h2>
+
+    <form action="/user/book_reviews/add_review" method="POST">
+        <label for="username">Username:</label><br>
+        <select id="username" name="username" required>
+            <% for (const user of users) { %>
+                <option value="<%= user.username %>">
+                    <%= user.username %>
+                </option>
+                <% } %>
+        </select><br>
+        <label for="rating">Rating:</label><br>
+        <input type="number" id="rating" name="rating" min="1" max="5" required><br>
+        <label for="review_text">Review Text:</label><br>
+        <textarea id="review_text" name="review_text"></textarea><br>
+        <input type="hidden" name="isbn" value="<%= isbn %>">
+        <button type="submit">Submit</button>
+    </form>
+
+</body>

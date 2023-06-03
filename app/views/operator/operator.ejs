@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Operator Page</title>
+</head>
+
+<body>
+    <h1>Welcome, operator!</h1>
+
+    <br>
+
+    <h2>Search books</h2>
+    <form action="/operator/search_books" method="post">
+        <label for="title">Book Title:</label>
+        <input type="text" id="title" name="title">
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category">
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author"><br>
+        <label for="copies">Copies:</label>
+        <input type="number" id="copies" name="copies">
+        <label for="school">School:</label>
+        <select id="school" name="school">
+            <% schools.forEach(school=> { %>
+                <option value="<%= school.school_id %>">
+                    <%= school.name %>
+                </option>
+                <% }); %>
+        </select><br>
+        <label for="order_by">Order by:</label>
+        <select id="order_by" name="order_by">
+            <option value="title">Title</option>
+            <option value="author">Author</option>
+        </select>
+        <label for="order_dir">Order direction:</label>
+        <select id="order_dir" name="order_dir">
+            <option value="ASC">Ascending</option>
+            <option value="DESC">Descending</option>
+        </select><br>
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <br>
+
+    <h2>Borrowers with delays</h2>
+    <form action="/operator/search_delays" method="POST">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name">
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name">
+        <label for="delay_days">Delay Days:</label>
+        <input type="number" id="delay_days" name="delay_days">
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <br>
+
+    <h2>Average ratings</h2>
+    <form action="/operator/search_average_ratings" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category">
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <br>
+
+    <h2>Add New User</h2>
+
+    <form action="/operator/new_user" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="password" required><br>
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required><br>
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" required><br>
+        
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="student">Student</option>
+            <option value="professor">Professor</option>
+        </select>
+        <label for="school">School:</label>
+        <select id="school" name="school" required>
+            <% for (const school of schools) { %>
+                <option value="<%= school.school_id %>">
+                    <%= school.name %>
+                </option>
+                <% } %>
+        </select><br>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/app.css">
+    <title>Authors and teachers by category</title>
+</head>
+
+<body>
+    <h1>Authors</h1>
+    <table>
+        <tr>
+            <th>Full Name</th>
+        </tr>
+        <% for (const author of authors) { %>
+            <tr>
+                <td>
+                    <%= author.full_name %>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+
+    <h1>Teachers</h1>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        <% for (const teacher of teachers) { %>
+            <tr>
+                <td>
+                    <%= teacher.first_name %>
+                </td>
+                <td>
+                    <%= teacher.last_name %>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+</body>
+
+</html>

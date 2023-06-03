@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/app.css">
+    <title>Books</title>
+</head>
+
+<body>
+    <h1>Books</h1>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Authors</th>
+            <th>Categories</th>
+            <th>Total Copies</th>
+            <th>Available Copies</th>
+        </tr>
+        <% for (const book of books) { %>
+            <tr>
+                <td>
+                    <%= book.title %>
+                </td>
+                <td>
+                    <%= book.authors %>
+                </td>
+                <td>
+                    <%= book.categories %>
+                </td>
+                <td>
+                    <%= book.total_copies %>
+                </td>
+                <td>
+                    <%= book.available_copies %>
+                </td>
+            </tr>
+            <% }; %>
+    </table>
+</body>
+
+</html>

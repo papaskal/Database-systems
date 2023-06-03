@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/app.css">
+    <title>Administrator Page</title>
+</head>
+
+<body>
+    <h1>Welcome, administrator!</h1>
+
+    <h2>Loans per school</h2>
+    <form action="/administrator/loans_per_school" method="post">
+        <label for="year">Year:</label>
+        <select id="year" name="year">
+            <% for (const year of years) { %>
+                <option value="<%= year.year %>">
+                    <%= year.year %>
+                </option>
+                <% } %>
+        </select>
+        <label for="month">Month:</label>
+        <select id="month" name="month">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <br>
+
+    <h2>Authors and teachers by category</h2>
+    <form action="/administrator/authors_and_teachers" method="POST">
+        <label for="category">Select a category:</label>
+        <select name="category" id="category">
+            <% for (const category of categories) { %>
+                <option value="<%= category.category_id %>">
+                    <%= category.name %>
+                </option>
+                <% } %>
+        </select>
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <br>
+
+    <h2>Young teachers who borrowed most books</h2>
+    <form action="/administrator/young_teachers" method="POST">
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Authors whose books have not been borrowed</h2>
+    <form action="/administrator/authors_no_borrow" method="POST">
+        <button type="submit">Submit</button>
+    </form>
+
+    <br>
+
+    <h2>Loans per operator above 20</h2>
+    <form action="/administrator/loans_per_operator" method="POST">
+        <label for="year">Year:</label>
+        <select id="year" name="year">
+            <% for (const year of years) { %>
+                <option value="<%= year.year %>">
+                    <%= year.year %>
+                </option>
+                <% } %>
+        </select>
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <br>
+
+    <h2>Top 3 category pairs in borrowings</h2>
+    <form action="/administrator/top_category_pairs" method="POST">
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <br>
+
+    <h2>Authors with at least 5 books less than the author with most books</h2>
+    <form action="/administrator/authors_with_less_books" method="POST">
+        <button type="submit">Submit</button>
+
+    </form>
+
+</body>
+
+</html>

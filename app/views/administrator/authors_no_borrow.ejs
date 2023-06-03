@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/app.css">
+    <title>Authors with no borrowed books</title>
+</head>
+
+<body>
+    <h1>Authors whose books have not been borrowed:</h1>
+    <table>
+        <tr>
+            <th>Author Name</th>
+        </tr>
+        <% for(const author of authors) { %>
+            <tr>
+                <td>
+                    <%= author.full_name %>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+</body>
+
+</html>

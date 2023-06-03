@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/app.css">
+    <title>User info</title>
+</head>
+
+<body>
+    <h1>User Info</h1>
+
+    <p>
+        <strong>Username</strong>: <%= user.username %>
+    </p>
+    <p>
+        <strong>Password</strong>: <%= user.password %>
+    </p>
+    <p>
+        <strong>Role</strong>: <%= user.role %>
+    </p>
+    <p>
+        <strong>First Name</strong>: <%= user.first_name %>
+    </p>
+    <p>
+        <strong>Last Name</strong>: <%= user.last_name %>
+    </p>
+    <p>
+        <strong>Date of Birth</strong>: <%= new Date(user.date_of_birth).toLocaleDateString('en-GB') %>
+    </p>
+    <p>
+        <strong>School</strong>: <%= user.school_name %>
+    </p>
+    <p>
+        <% if (user.role==='student' || user.role==='professor' ) { %>
+            <form action="/user/user_info/update" method="GET">
+                <input type="hidden" name="username" value="<%= user.username %>">
+                <input type="submit" value="Update user">
+            </form>
+            <% } %>
+    </p>
+    <p>
+    <form action="/user/user_info/delete" method="POST">
+        <input type="hidden" name="username" value="<%= user.username %>">
+        <input type="submit" value="Delete user">
+    </form>
+    </p>
+
+
+    <h2>Borrowings</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Book Title</th>
+                <th>School Name</th>
+                <th>Borrow Date</th>
+                <th>Return Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const borrowing of borrowings) { %>
+                <tr>
+                    <td>
+                        <%= borrowing.isbn %>
+                    </td>
+                    <td>
+                        <%= borrowing.title %>
+                    </td>
+                    <td>
+                        <%= borrowing.school_name %>
+                    </td>
+                    <td>
+                        <%= new Date(borrowing.borrow_date).toLocaleDateString('en-GB') %>
+                    </td>
+                    <td>
+                        <%= borrowing.return_date ? new Date(borrowing.return_date).toLocaleDateString('en-GB')
+                            : 'Not Returned' %>
+                    </td>
+                    <td>
+                        <% if (!borrowing.return_date) { %>
+                            <form action="/user/user_info/complete_borrowing" method="POST">
+                                <input type="hidden" name="username" value="<%= user.username %>">
+                                <input type="hidden" name="isbn" value="<%= borrowing.isbn %>">
+                                <input type="submit" value="Complete Borrowing">
+                            </form>
+                            <% } %>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+
+    <h2>Reservations</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Book Title</th>
+                <th>School Name</th>
+                <th>Reservation Date</th>
+                <th>Cancel Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const reservation of reservations) { %>
+                <tr>
+                    <td>
+                        <%= reservation.isbn %>
+                    </td>
+                    <td>
+                        <%= reservation.title %>
+                    </td>
+                    <td>
+                        <%= reservation.school_name %>
+                    </td>
+                    <td>
+                        <%= new Date(reservation.reservation_date).toLocaleDateString('en-GB') %>
+                    </td>
+                    <td>
+                        <%= new Date(reservation.cancel_date).toLocaleDateString('en-GB') %>
+                    </td>
+                    <td>
+                        <% if (reservation.cancel_date> Date.now()) { %>
+                            <form action="/user/user_info/cancel_reservation" method="POST">
+                                <input type="hidden" name="username" value="<%= user.username %>">
+                                <input type="hidden" name="isbn" value="<%= reservation.isbn %>">
+                                <input type="submit" value="Cancel Reservation">
+                            </form>
+                            <% } %>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+
+</body>

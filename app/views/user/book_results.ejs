@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/app.css">
+    <title>Books</title>
+</head>
+
+<body>
+    <h1>Books</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Authors</th>
+                <th>Categories</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const book of results) { %>
+                <tr>
+                    <td>
+                        <%= book.isbn %>
+                    </td>
+                    <td>
+                        <%= book.title %>
+                    </td>
+                    <td>
+                        <%= book.authors %>
+                    </td>
+                    <td>
+                        <%= book.categories %>
+                    </td>
+                    <td>
+                        <form action="/user/book_info" method="post">
+                            <input type="hidden" name="isbn" value="<%= book.isbn %>">
+                            <button type="submit">View Info</button>
+                        </form>
+                    </td>
+
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+
+</body>

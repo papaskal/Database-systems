@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/app.css">
+    <title>Update user info</title>
+</head>
+
+<body>
+    <h1>Update user information</h1>
+    <form action="/user/user_info/update" method="post">
+        <label for="first_name">First Name:</label><br>
+        <input type="text" id="first_name" name="first_name" value="<%= user.first_name %>"><br>
+        <label for="last_name">Last Name:</label><br>
+        <input type="text" id="last_name" name="last_name" value="<%= user.last_name %>"><br>
+        <label for="password">Password:</label><br>
+        <input type="text" id="password" name="password" value="<%= user.password %>"><br>
+        <label for="school">School:</label><br>
+        <select id="school" name="school">
+            <% for (const school of schools) { %>
+                <option value="<%= school.school_id %>" <% if (user.school_id===school.school_id) { %>selected<% } %>>
+                        <%= school.name %>
+                </option>
+                <% } %>
+        </select><br>
+        <input type="hidden" name="username" value="<%= user.username %>">
+        <input type="submit" value="Submit">
+    </form>
+</body>

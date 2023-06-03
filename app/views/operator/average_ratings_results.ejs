@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/app.css">
+    <title>Average ratings</title>
+</head>
+
+<body>
+
+    <h1>Average ratings</h1>
+
+    <h2>User average ratings</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>School Name</th>
+                <th>Average Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const result of userResults) { %>
+                <tr>
+                    <td>
+                        <%= result.username %>
+                    </td>
+                    <td>
+                        <%= result.first_name %>
+                    </td>
+                    <td>
+                        <%= result.last_name %>
+                    </td>
+                    <td>
+                        <%= result.school_name %>
+                    </td>
+                    <td>
+                        <%= result.average_rating %>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+
+    <h2>Category average ratings</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Average Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const result of categoryResults) { %>
+                <tr>
+                    <td>
+                        <%= result.name %>
+                    </td>
+                    <td>
+                        <%= result.average_rating %>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+</body>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="/app.css">
+    <title>Authors with less books</title>
+    </head>
+    <body>
+        <h1>Authors with at least 5 books less than the author with most books:</h1>
+        <table>
+            <tr>
+                <th>Author Name</th>
+                <th>Number of Books</th>
+            </tr>
+            <% for(const author of authors) { %>
+            <tr>
+                <td><%= author.full_name %></td>
+                <td><%= author.book_count %></td>
+            </tr>
+            <% } %>
+        </table>
+    </body>
+</html>

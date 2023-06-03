@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/app.css">
+    <title>Loans per school</title>
+</head>
+
+<body>
+    <h1>Loans per school</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>School Name</th>
+                <th>Total Loans</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const result of results) { %>
+                <tr>
+                    <td>
+                        <%= result.name %>
+                    </td>
+                    <td>
+                        <%= result.total_loans %>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+</body>
+
+</html>

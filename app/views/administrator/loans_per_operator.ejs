@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/app.css">
+    <title>Loans per operator</title>
+</head>
+
+<body>
+    <h1>Loans per operator above 20</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>School Name</th>
+                <th>Total Loans</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const result of results) { %>
+                <tr>
+                    <td>
+                        <%= result.first_name %>
+                    </td>
+                    <td>
+                        <%= result.last_name %>
+                    </td>
+                    <td>
+                        <%= result.school_name %>
+                    </td>
+                    <td>
+                        <%= result.total_loans %>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+</body>
+
+</html>

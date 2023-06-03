@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/app.css">
+    <title>Borrowers with delays</title>
+</head>
+
+<body>
+    <h1>Borrowers with delays</h1>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>School</th>
+            <th>Borrow Date</th>
+            <th>Delay Days</th>
+        </tr>
+        <% for (const user of users) { %>
+            <tr>
+                <td>
+                    <%= user.username %>
+                </td>
+                <td>
+                    <%= user.first_name %>
+                </td>
+                <td>
+                    <%= user.last_name %>
+                </td>
+                <td>
+                    <%= user.isbn %>
+                </td>
+                <td>
+                    <%= user.title %>
+                </td>
+                <td>
+                    <%= user.school_name %>
+                </td>
+                <td>
+                    <%= new Date(user.borrow_date).toLocaleDateString('en-GB') %>
+                </td>
+                <td>
+                    <%= user.delay_days %>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+    
+</body>
+
+</html>
